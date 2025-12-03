@@ -4,6 +4,7 @@ services:
   # ──────────────────────────────
   sveltekit:
     image: ghcr.io/matthewcmatt/superseller/sveltekit:latest
+    build: ui
     platform: linux/amd64
     restart: always
     labels:
@@ -15,12 +16,15 @@ services:
 
       # Service port exposed by the container
       - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"
+    environment:
+      - POCKETBASE_URL=api.localhost
 
   # ──────────────────────────────
   # PocketBase server
   # ──────────────────────────────
   pocketbase:
     image: ghcr.io/matthewcmatt/superseller/pocketbase:latest
+    build: go
     platform: linux/amd64
     volumes:
       - pocketbase_data:/pb_data
