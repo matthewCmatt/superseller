@@ -5,7 +5,8 @@ services:
   # SvelteKit frontend (SSR Node)
   # ──────────────────────────────
   sveltekit:
-    image: ghcr.io/matthewcmatt/superseller:latest
+    image: ghcr.io/matthewcmatt/superseller/sveltekit:latest
+    platform: linux/amd64
     restart: always
     labels:
       - "traefik.enable=true"
@@ -21,8 +22,8 @@ services:
   # PocketBase server
   # ──────────────────────────────
   pocketbase:
-    image: pocketbase/pocketbase:latest
-    command: ["serve", "--http=0.0.0.0:8080"]
+    image: ghcr.io/matthewcmatt/superseller/pocketbase:latest
+    platform: linux/amd64
     volumes:
       - pocketbase_data:/pb_data
     restart: always
