@@ -19,5 +19,5 @@ WORKDIR /app
 # Copy the Go binary
 COPY --from=builder /app/app .
 
-EXPOSE 8080
+EXPOSE 8090
 CMD ["./app", "serve"]
