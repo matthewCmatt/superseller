@@ -7,14 +7,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-push:
+  build-and-push-sveltekit:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: matthewcmatt/superseller
+      IMAGE_NAME: matthewcmatt/superseller/sveltekit
       TAG: latest
 
     steps:
@@ -33,6 +33,38 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $REGISTRY/$IMAGE_NAME:$TAG ./ui
+
+      # 4. Push Docker image
+      - name: Push Docker image
+        run: |
+          docker push $REGISTRY/$IMAGE_NAME:$TAG
+
+  build-and-push-pocketbase:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: matthewcmatt/superseller/pocketbase
+      TAG: latest
+
+    steps:
+      # 1. Checkout repo
+      - uses: actions/checkout@v3
+
+      # 2. Log in to GitHub Container Registry
+      - name: Log in to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # 3. Build the Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t $REGISTRY/$IMAGE_NAME:$TAG ./go
 
       # 4. Push Docker image
       - name: Push Docker image

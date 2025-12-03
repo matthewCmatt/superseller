@@ -22,7 +22,7 @@ services:
   # ──────────────────────────────
   pocketbase:
     image: pocketbase/pocketbase:latest
-    command: ["serve", "--http=0.0.0.0:8090"]
+    command: ["serve", "--http=0.0.0.0:8080"]
     volumes:
       - pocketbase_data:/pb_data
     restart: always
@@ -34,7 +34,7 @@ services:
       - "traefik.http.routers.pocketbase.entrypoints=web"
 
       # Service port
-      - "traefik.http.services.pocketbase.loadbalancer.server.port=8090"
+      - "traefik.http.services.pocketbase.loadbalancer.server.port=8080"
 
   # ──────────────────────────────
   # Traefik reverse proxy
