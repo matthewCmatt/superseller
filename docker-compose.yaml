@@ -5,7 +5,7 @@ services:
   # SvelteKit frontend (SSR Node)
   # ──────────────────────────────
   sveltekit:
-    image: ghcr.io/matthewcmatt/superseller/ui:latest
+    image: ghcr.io/matthewcmatt/superseller:latest
     restart: always
     labels:
       - "traefik.enable=true"
