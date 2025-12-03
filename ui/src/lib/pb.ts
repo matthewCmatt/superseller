@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase';
 
-import { POCKETBASE_URL } from '$env/dynamic/public';
+import { env } from '$env/dynamic/public';
 
-const pb = new PocketBase('http://api.localhost');
+const pb = new PocketBase(env.PUBLIC_POCKETBASE_URL);
 
 export default pb;

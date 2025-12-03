@@ -16,8 +16,8 @@ services:
 
       # Service port exposed by the container
       - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"
-    environment:
-      - POCKETBASE_URL=api.localhost
+    env_file:
+      - .env
 
   # ──────────────────────────────
   # PocketBase server
