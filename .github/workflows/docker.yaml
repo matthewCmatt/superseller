@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: matthewcmatt/superseller-ui
+      IMAGE_NAME: matthewCmatt/superseller
       TAG: latest
 
     steps:
