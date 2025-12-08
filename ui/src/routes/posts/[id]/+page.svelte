@@ -4,7 +4,7 @@
 	let { data }: PageProps = $props();
 </script>
 
-<h1>{data.body.title || 'no title'}</h1>
+<h2>{data.body.title || 'no title'}</h2>
 <div>{data.body.description || 'no description'}</div>
 
 {#if data.media.length == 0}

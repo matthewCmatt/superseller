@@ -1,11 +1,9 @@
 <script lang="ts">
-	import PostPreview from '$lib/postPreview.svelte';
+	import PostPreview from './PostPreview.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 </script>
-
-<h1>SuperSeller</h1>
 
 {#await data.posts}
 	<p>Loading posts...</p>
