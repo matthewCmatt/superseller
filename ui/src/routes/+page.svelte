@@ -11,10 +11,19 @@
 	<ul>
 		{#each posts.items as post}
 			{#if post.body}
-				<PostPreview id={post.id} body={post.body}></PostPreview>
+				<li>
+					<PostPreview id={post.id} body={post.body}></PostPreview>
+				</li>
 			{/if}
 		{/each}
 	</ul>
 {:catch error}
 	<p>Something went wrong: {error.message}</p>
 {/await}
+
+<style>
+	ul {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 40ch);
+	}
+</style>
