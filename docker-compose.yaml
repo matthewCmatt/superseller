@@ -11,7 +11,7 @@ services:
       - "traefik.enable=true"
 
       # Router
-      - "traefik.http.routers.sveltekit.rule=Host(`localhost`)"
+      - "traefik.http.routers.sveltekit.rule=Host(`localhost`,`hardlyused.org`)"
       - "traefik.http.routers.sveltekit.entrypoints=web"
 
       # Service port exposed by the container
@@ -33,7 +33,7 @@ services:
       - "traefik.enable=true"
 
       # Router
-      - "traefik.http.routers.pocketbase.rule=Host(`api.localhost`)"
+      - "traefik.http.routers.pocketbase.rule=Host(`api.localhost`,`api.hardlyused.org`)"
       - "traefik.http.routers.pocketbase.entrypoints=web"
 
       # Service port
