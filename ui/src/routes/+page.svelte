@@ -1,12 +1,13 @@
 <script lang="ts">
-	import pb from '$lib/pb';
 	import PostPreview from '$lib/postPreview.svelte';
-	let posts = pb.collection('posts').getList();
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
 <h1>SuperSeller</h1>
 
-{#await posts}
+{#await data.posts}
 	<p>Loading posts...</p>
 {:then posts}
 	<ul>
